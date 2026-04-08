@@ -10,6 +10,7 @@ Primary indicator: `quarterlyTheory` — splits the trading day into four equal 
 - Session high/low tracking for major markets (Sydney, Asia, London, NY)  
 - Configurable line styles (solid / dashed / dotted) and widths  
 - Built with reusable helpers in `/tools` for plotting & params
+  Note: On the 5-minute timeframe, the first quarter line may look inconsistent, but it is simply due to market re-opening at London session.
 
 
 
