@@ -11,6 +11,12 @@ Primary indicator: `quarterlyTheory` — splits the trading day into four equal 
 - Configurable line styles (solid / dashed / dotted) and widths  
 - Built with reusable helpers in `/tools` for plotting & params
 
+
+
+https://github.com/user-attachments/assets/f0cc5ff7-c702-4d0f-8b1a-3ba33a13f8ad
+
+
+
 ---
 
 ## Quick Start
