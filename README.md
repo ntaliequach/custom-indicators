@@ -1,6 +1,5 @@
 # Quarterly Theory — Time Divider
 
-A small, personal set of Tradovate Trader indicators and helpers.  
 Primary indicator: `quarterlyTheory` — splits the trading day into four equal intraday segments to surface recurring pivot zones and draws named session high/low lines (Sydney, Asia, London, New York).
 
 ---
