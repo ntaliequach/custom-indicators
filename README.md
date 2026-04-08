@@ -1,33 +1,61 @@
-# Quarterly Theory Time Divider
+# Quarterly Theory — Time Divider
 
-## Quick summary
-- Purpose: develop, test, and publish personal indicators for Tradovate Trader.
-- Highlight: `quarterlyTheory` — splits the trading day into four equal intraday segments and draws named session high/low lines (Sydney, Asia, London, New York).
-- Status: working examples + helpers for local development and deployment.
+A small, personal set of Tradovate Trader indicators and helpers.  
+Primary indicator: `quarterlyTheory` — splits the trading day into four equal intraday segments to surface recurring pivot zones and draws named session high/low lines (Sydney, Asia, London, New York).
 
-## Repository layout
-- `/builtin` — reusable indicators (library-style)
-- `/examples` — small examples and prototypes
-- `/tools` — helpers: plotting, params, session/time utilities, predefs
-- `/typescript` — typings for editor tooling
-- `/tutorial` — demo/tutorial sources (GitHub Pages)
+---
 
-## Key concepts
-- Quarterly theory: divides the trading day into four equal segments to surface recurring pivot zones; vertical dividers mark segment starts and session HL lines show current-day ranges.
-- Time alignment: timezone-aware marker logic uses Intl.DateTimeFormat (e.g. America/New_York) to handle DST and ensure markers align with market hours.
-- Line styles: human-friendly params (solid, dashed, dotted) map to renderer values in the plotter.
+## Highlights
+- Clean, timezone-aware dividers for 1m / 5m / 15m / 1h charts  
+- Session high/low tracking for major markets (Sydney, Asia, London, NY)  
+- Configurable line styles (solid / dashed / dotted) and widths  
+- Built with reusable helpers in `/tools` for plotting & params
 
-## Getting started (local)
-1. Fork (recommended) and clone:
+---
+
+## Quick Start
+1. Fork (recommended), then clone:
    git clone git@github.com:YOUR_USERNAME/custom-indicators.git
-2. Edit or add an indicator in `/examples` or `/builtin`.
-3. Use `/tools` helpers (predef, plotting, meta) to keep params and plotting consistent.
-4. Load the indicator into Tradovate Trader per the platform's dev instructions for testing.
+2. Edit or add indicators in `/examples` or `/builtin`.
+3. Use `/tools` helpers (predef, plotting, meta).
+4. Load the indicator file in Tradovate Trader for testing.
 
-## Development tips
+---
+
+## Usage Notes
+- Quarterly theory = divide trading day into 4 equal segments → vertical dividers mark segment starts; session HL lines show intraday ranges.
+- Time alignment uses Intl.DateTimeFormat with `timeZone: "America/New_York"` so markers align with market hours and handle DST.
+
+---
+
+## Known Issues (current)
+- Dashed/dotted line render has a bug in some environments — styled lines may not display correctly.  
+- Session price-range horizontals only appear reliably for the very current session; older session HL lines may not render.
+
+If you rely on these visuals, test locally before publishing.
+
+---
+
+## Dev / Implementation Tips
 - Use timezone-aware formatting for market-aligned markers:
   Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour12: false, hour: "2-digit", minute: "2-digit" })
-- Reset internal counters/state when switching chart timeframe modes to avoid drift.
-- Keep session HL updates local to the current UTC day to avoid cross-day leakage.
+- Reset internal counters/state when switching chart timeframe modes to avoid drift (important for 1h special markers).
+- Map human line-style params to renderer values in the plotter (see `/tools/plotting` and `/tools/predef`).
 
-Personal collection of Tradovate Trader custom indicators and supporting utilities. Focused on practical, reusable JS indicators (examples and builtin-style), utilities for plotting/time handling, and TypeScript typings for IDE support.
+---
+
+## Repo Layout
+- `/builtin` — library-style indicators  
+- `/examples` — prototypes & demos  
+- `/tools` — helpers (plotting, params, time/session utilities)  
+- `/typescript` — typings for IDE support  
+- `/tutorial` — demo/tutorial sources
+
+---
+
+## License & Attribution
+- Check upstream licensing before republishing code derived from other authors. Add a LICENSE and attribution if required.
+
+---
+
+Concise, test-driven, and ready for iteration — open an issue or PR with repro steps if you hit rendering bugs.
